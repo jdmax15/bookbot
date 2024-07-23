@@ -1,6 +1,9 @@
+import sys
+
 def main():
-    book = input("Choose a book")
+    book = input("Choose a book: ")
     book_path = f"books/{book}.txt"
+
     text = get_book_text(book_path)
     word_count = get_word_count(text)
     char_dict = count_characters(text)
@@ -20,8 +23,16 @@ def main():
 
 
 def get_book_text(path):
-    with open(path) as f:
-        return f.read()
+    try:
+        with open(path) as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"The book {path} was not found.")
+        sys.exit()
+    except Exception as e:
+        print(f"An error has occurred: {e}")
+        sys.exit()
+    
 
 def get_word_count(text):
     words = text.split()   
