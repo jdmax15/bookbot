@@ -58,7 +58,6 @@ def make_report(char_count):
     dict_list.sort(reverse=True, key=sort_on)
     return dict_list
 
-
 main()
 
         
