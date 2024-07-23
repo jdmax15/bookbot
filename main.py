@@ -1,15 +1,9 @@
 def main():
-    book_path = "books/frankenstein.txt"
-
+    book = input("Choose a book")
+    book_path = f"books/{book}.txt"
     text = get_book_text(book_path)
-    print(text)
-
     word_count = get_word_count(text)
-    print(f"Words: {word_count}")
-
     char_dict = count_characters(text)
-    print(char_dict)
-
     report = make_report(char_dict)
 
     print(f"--- Begin report of {book_path} ---")
@@ -51,7 +45,6 @@ def make_report(char_count):
     for char in char_count:
         dict_list.append({"char": char, "num": char_count[char]})
     dict_list.sort(reverse=True, key=sort_on)
-    print(f"dict_list: {dict_list}")
     return dict_list
 
 
